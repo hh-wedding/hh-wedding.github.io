@@ -12,9 +12,9 @@
   <!-- Open Graph -->
   <meta property="og:title" content="훈덕🤍혜우 모바일 청첩장" />
   <meta property="og:description" content="2025.09.20 훈덕🤍혜우 결혼합니다." />
-  <meta property="og:image" content="assets/img/url-main.jpg" />
+  <meta property="og:image" content="https://YOUR-ID.github.io/assets/img/url-main.jpg" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://YOUR-ID.github.io" />
+  <meta property="og:url" content="https://hh-wedding.github.io" />
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet">
@@ -42,11 +42,13 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: "Song Myung", serif;
+      font-family: 'Pretendard', sans-serif; /* 본문: Pretendard */
     }
 
-    h1, h2, h3 { color: var(--color4); }
-    .muted { color: var(--color2); }
+   h1, h2, h3 {
+  font-family: 'Cormorant Garamond', serif; /* 타이틀: Cormorant */
+  color: var(--color4); 
+  }
 
     /* 헤더(히어로) */
     header.masthead{
@@ -56,8 +58,8 @@
     }
     header.masthead::before{ content:""; position:absolute; inset:0; background:var(--heroOverlay);}
     header .container{ position:relative; z-index:2;}
-    header h1{ font-family:'Amatic SC', sans-serif; font-weight:700; font-size:64px; letter-spacing:1px; color:#fff;}
-    header h2.tag{ font-family:'Amatic SC', sans-serif; font-weight:700; font-size:28px; color:#fff; opacity:.95; margin-top:6px;}
+    header h1{ font-size:64px; letter-spacing:1px; color:#fff; }
+    header h2.tag{ font-size:28px; color:#fff; opacity:.95; margin-top:6px; }
     header p.date{ font-size:16px; margin-top:14px; color:#fff;}
 
     /* 공통 섹션 */
@@ -149,15 +151,15 @@
         <!-- 신랑 -->
         <div class="col-lg-6 col-md-6 mb-5 mb-lg-0">
           <p style="font-size:18px;">김원기 · 유재철의 장남</p> <!-- 수정 -->
-          <h3 style="font-family:'Song Myung', serif;">👰🏻‍♂️ 김훈덕 </h3> <!-- 수정 -->
+          <h3> 신랑 김훈덕 </h3> <!-- 수정 -->
           <img src="assets/img/ys.jpg" alt="신랑 이미지" class="img-fluid profile-img"> <!-- 이미지 경로 수정 -->
           <p><br></p>
           <ul class="list-inline">
             <li class="list-inline-item">
-              <a class="social-link text-white mr-3" href="tel:01028504377" title="신랑에게 전화"><i class="fa-solid fa-phone"></i></a> <!-- 전화 수정 -->
+              <a class="social-link mr-3" href="tel:01028504377" title="신랑에게 전화"><i class="fa-solid fa-phone"></i></a> <!-- 전화 수정 -->
             </li>
             <li class="list-inline-item">
-              <a class="social-link text-white mr-3" href="#" onclick="copyAccount('신랑 계좌번호: 1000-8784-9391'); return false;" title="계좌번호 복사"><i class="fa-solid fa-comments-dollar"></i></a> <!-- 계좌 수정 -->
+              <a class="social-link mr-3" href="#" onclick="copyAccount('신랑 계좌번호: 1000-8784-9391'); return false;" title="계좌번호 복사"><i class="fa-solid fa-comments-dollar"></i></a> <!-- 계좌 수정 -->
             </li>
           </ul>
           <div>
@@ -180,15 +182,15 @@
         <!-- 신부 -->
         <div class="col-lg-6 col-md-6 mb-5 mb-lg-0">
           <p style="font-size:18px;">박율봉 · 정은아의 장녀</p> <!-- 수정 -->
-          <h3 style="font-family:'Song Myung', serif;">🤵🏻‍♀️신부 박혜우 </h3> <!-- 수정 -->
+          <h3 style="font-family:'Song Myung', serif;"> 신부 박혜우 </h3> <!-- 수정 -->
           <img src="assets/img/jy.jpg" alt="신부 이미지" class="img-fluid profile-img"> <!-- 이미지 경로 수정 -->
           <p><br></p>
           <ul class="list-inline">
             <li class="list-inline-item">
-              <a class="social-link text-white mr-3" href="tel:01020219891" title="신부에게 전화"><i class="fa-solid fa-phone"></i></a> <!-- 전화 수정 -->
+              <a class="social-link mr-3" href="tel:01020219891" title="신부에게 전화"><i class="fa-solid fa-phone"></i></a> <!-- 전화 수정 -->
             </li>
             <li class="list-inline-item">
-              <a class="social-link text-white mr-3" href="#" onclick="copyAccount('신부 계좌번호: 1000-8819-3319'); return false;" title="계좌번호 복사"><i class="fa-solid fa-comments-dollar"></i></a> <!-- 계좌 수정 -->
+              <a class="social-link mr-3" href="#" onclick="copyAccount('신부 계좌번호: 1000-8819-3319'); return false;" title="계좌번호 복사"><i class="fa-solid fa-comments-dollar"></i></a> <!-- 계좌 수정 -->
             </li>
           </ul>
           <div>
@@ -220,41 +222,41 @@
       <div class="swiper" style="margin-top:18px;">
         <div class="swiper-wrapper">
           <!-- 최소 30장 예시 -->
-          <div class="swiper-slide"><img src="assets/album/01.jpg" alt="album 01" class="album-img"></div>
-          <div class="swiper-slide"><img src="assets/album/02.jpg" alt="album 02" class="album-img"></div>
-          <div class="swiper-slide"><img src="assets/album/03.jpg" alt="album 03" class="album-img"></div>
-          <div class="swiper-slide"><img src="assets/album/04.jpg" alt="album 04" class="album-img"></div>
-          <div class="swiper-slide"><img src="assets/album/05.jpg" alt="album 05" class="album-img"></div>
-          <div class="swiper-slide"><img src="assets/album/06.jpg" alt="album 06" class="album-img"></div>
-          <div class="swiper-slide"><img src="assets/album/07.jpg" alt="album 07" class="album-img"></div>
-          <div class="swiper-slide"><img src="assets/album/08.jpg" alt="album 08" class="album-img"></div>
-          <div class="swiper-slide"><img src="assets/album/09.jpg" alt="album 09" class="album-img"></div>
-          <div class="swiper-slide"><img src="assets/album/10.jpg" alt="album 10" class="album-img"></div>
+          <div class="swiper-slide"><img src="assets/album/01.jpg" alt="album 01" class="album-img"loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/02.jpg" alt="album 02" class="album-img"loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/03.jpg" alt="album 03" class="album-img"loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/04.jpg" alt="album 04" class="album-img"loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/05.jpg" alt="album 05" class="album-img"loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/06.jpg" alt="album 06" class="album-img"loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/07.jpg" alt="album 07" class="album-img"loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/08.jpg" alt="album 08" class="album-img"loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/09.jpg" alt="album 09" class="album-img"loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/10.jpg" alt="album 10" class="album-img"loading="lazy"></div>
 
-          <div class="swiper-slide"><img src="assets/album/11.jpg" alt="album 11" class="album-img"></div>
-          <div class="swiper-slide"><img src="assets/album/12.jpg" alt="album 12" class="album-img"></div>
-          <div class="swiper-slide"><img src="assets/album/13.jpg" alt="album 13" class="album-img"></div>
-          <div class="swiper-slide"><img src="assets/album/14.jpg" alt="album 14" class="album-img"></div>
-          <div class="swiper-slide"><img src="assets/album/15.jpg" alt="album 15" class="album-img"></div>
-          <div class="swiper-slide"><img src="assets/album/16.jpg" alt="album 16" class="album-img"></div>
-          <div class="swiper-slide"><img src="assets/album/17.jpg" alt="album 17" class="album-img"></div>
-          <div class="swiper-slide"><img src="assets/album/18.jpg" alt="album 18" class="album-img"></div>
-          <div class="swiper-slide"><img src="assets/album/19.jpg" alt="album 19" class="album-img"></div>
-          <div class="swiper-slide"><img src="assets/album/20.jpg" alt="album 20" class="album-img"></div>
+          <div class="swiper-slide"><img src="assets/album/11.jpg" alt="album 11" class="album-img"loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/12.jpg" alt="album 12" class="album-img"loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/13.jpg" alt="album 13" class="album-img"loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/14.jpg" alt="album 14" class="album-img"loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/15.jpg" alt="album 15" class="album-img"loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/16.jpg" alt="album 16" class="album-img"loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/17.jpg" alt="album 17" class="album-img"loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/18.jpg" alt="album 18" class="album-img"loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/19.jpg" alt="album 19" class="album-img"loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/20.jpg" alt="album 20" class="album-img"loading="lazy"></div>
 
-          <div class="swiper-slide"><img src="assets/album/21.jpg" alt="album 21" class="album-img"></div>
-          <div class="swiper-slide"><img src="assets/album/22.jpg" alt="album 22" class="album-img"></div>
-          <div class="swiper-slide"><img src="assets/album/23.jpg" alt="album 23" class="album-img"></div>
-          <div class="swiper-slide"><img src="assets/album/24.jpg" alt="album 24" class="album-img"></div>
-          <div class="swiper-slide"><img src="assets/album/25.jpg" alt="album 25" class="album-img"></div>
-          <div class="swiper-slide"><img src="assets/album/26.jpg" alt="album 26" class="album-img"></div>
-          <div class="swiper-slide"><img src="assets/album/27.jpg" alt="album 27" class="album-img"></div>
-          <div class="swiper-slide"><img src="assets/album/28.jpg" alt="album 28" class="album-img"></div>
-          <div class="swiper-slide"><img src="assets/album/29.jpg" alt="album 29" class="album-img"></div>
-          <div class="swiper-slide"><img src="assets/album/30.jpg" alt="album 30" class="album-img"></div>
+          <div class="swiper-slide"><img src="assets/album/21.jpg" alt="album 21" class="album-img"loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/22.jpg" alt="album 22" class="album-img"loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/23.jpg" alt="album 23" class="album-img"loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/24.jpg" alt="album 24" class="album-img"loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/25.jpg" alt="album 25" class="album-img"loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/26.jpg" alt="album 26" class="album-img"loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/27.jpg" alt="album 27" class="album-img"loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/28.jpg" alt="album 28" class="album-img"loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/29.jpg" alt="album 29" class="album-img"loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/30.jpg" alt="album 30" class="album-img"loading="lazy"></div>
 
           <!-- 더 추가 가능 -->
-          <!-- <div class="swiper-slide"><img src="assets/album/31.jpg" alt="album 31" class="album-img"></div> -->
+          <!-- <div class="swiper-slide"><img src="assets/album/31.jpg" alt="album 31" class="album-img"loading="lazy"></div> -->
         </div>
         <div class="swiper-pagination"></div>
         <div class="swiper-button-prev" style="color:#333;"></div>
