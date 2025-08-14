@@ -9,14 +9,14 @@
   <meta name="description" content="2025.09.20 훈덕🤍혜우 결혼합니다." />
   <meta name="author" content="HoonDeok & HyeWoo" />
 
-  <!-- Open Graph -->
+  <!-- Open Graph (절대경로 권장) -->
   <meta property="og:title" content="훈덕🤍혜우 모바일 청첩장" />
   <meta property="og:description" content="2025.09.20 훈덕🤍혜우 결혼합니다." />
-  <meta property="og:image" content="https://hh-wedding.github.io/assets/img/url-main.jpg" />
+  <meta property="og:image" content="https://hh-wedding.github.io/hh-wedding/assets/img/url-main.jpg" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://hh-wedding.github.io" />
+  <meta property="og:url" content="https:/hh-wedding.github.io/hh-wedding/" />
 
-  <!-- Fonts -->
+  <!-- Fonts: Cormorant Garamond (타이틀) + Pretendard (본문) -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
 
@@ -29,26 +29,27 @@
 
   <style>
     :root{
-      --color1: #E6E5A3;
-      --color2: #A9AF7E;
-      --color3: #7D8F69;
-      --color4: #557153;
+      --color1: #E6E5A3; /* 크림 */
+      --color2: #A9AF7E; /* 세이지 라이트 */
+      --color3: #7D8F69; /* 세이지 미드 */
+      --color4: #557153; /* 딥 그린 (메인) */
       --text: var(--color4);
       --muted: var(--color3);
       --bg: #ffffff;
       --heroOverlay: rgba(0,0,0,.35);
     }
 
+    /* 폰트 & 기본색 */
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Pretendard', sans-serif; /* 본문: Pretendard */
+      font-family: 'Pretendard', sans-serif; /* 본문 */
     }
-
-   h1, h2, h3 {
-  font-family: 'Cormorant Garamond', serif; /* 타이틀: Cormorant */
-  color: var(--color4); 
-  }
+    h1, h2, h3 {
+      font-family: 'Cormorant Garamond', serif; /* 타이틀 */
+      color: var(--color4);
+    }
+    .muted { color: var(--color2); }
 
     /* 헤더(히어로) */
     header.masthead{
@@ -58,16 +59,18 @@
     }
     header.masthead::before{ content:""; position:absolute; inset:0; background:var(--heroOverlay);}
     header .container{ position:relative; z-index:2;}
-    header h1{ font-size:48px; letter-spacing:1px; color:#fff; }
-    header h2.tag{ font-size:18px; color:#fff; opacity:.95; margin-top:6px; }
-    header p.date{ font-size:12px; margin-top:10px; color:#fff;}
+    header h1{ font-size:48px; letter-spacing:1px; color:#fff;}
+    header h2.tag{ font-size:18px; color:#fff; opacity:.95; margin-top:6px;}
+    header p.date{ font-size:14px; margin-top:14px; color:#fff;}
 
     /* 공통 섹션 */
     section.content-section{ padding:64px 0; }
 
     /* 원형 이미지 */
-    .profile-img{ width:180px; height:180px; object-fit:cover; border-radius:50%;
-      border:3px solid var(--color1); box-shadow:0 6px 24px rgba(0,0,0,.12); }
+    .profile-img{
+      width:180px; height:180px; object-fit:cover; border-radius:50%;
+      border:3px solid var(--color1); box-shadow:0 6px 24px rgba(0,0,0,.12);
+    }
 
     /* 버튼 */
     .btn-dark {
@@ -81,30 +84,28 @@
 
     /* 소셜 아이콘 */
     .social-link {
-      border-color: var(--color2);
-      color: var(--color2);
+      display:inline-flex; width:44px; height:44px; align-items:center; justify-content:center;
+      border-radius:50%; border:1px solid var(--color2);
+      color: var(--color2); text-decoration:none;
     }
-    .social-link:hover {
-      background-color: var(--color2);
-      color: #fff;
-    }
+    .social-link:hover { background-color: var(--color2); color:#fff; }
 
-    /* 접기/펼치기 */
+    /* 토글(B안) */
     .toggle-button{ cursor:pointer; user-select:none; display:inline-flex; align-items:center; gap:6px; }
-    .foldable-content, .foldable-content2{ display:none; }
+    .foldable-content{ display:none; margin-top:10px; }
 
-    /* 배경색 */
+    /* 배경 */
     .bg-light { background-color: rgba(230, 229, 163, 0.2) !important; }
     .bg-primary-lite { background-color: rgba(169, 175, 126, 0.15) !important; }
 
     /* 앨범 이미지 */
     .album-img{ width:100%; display:block; border-radius:16px; box-shadow:0 8px 32px rgba(0,0,0,.08); }
 
-    /* Swiper 네비게이션 */
+    /* Swiper 네비 */
     .swiper-button-prev, .swiper-button-next { color: var(--color4) !important; }
     .swiper-pagination-bullet-active { background: var(--color4) !important; }
 
-    /* 방명록 폼 */
+    /* 방명록 */
     #guestResult{ font-size:14px; color:var(--muted); }
   </style>
 </head>
@@ -124,7 +125,7 @@
     <div class="container px-4 px-lg-5 text-center">
       <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-lg-10">
-          <p style="font-size:18px; line-height:1.9">
+          <p style="font-size:14px; line-height:1.9">
             We said yes.<br>
             To each other — in love, because He loved us first.<br>
             <span class="muted">(1 John 4:19)</span><br><br>
@@ -134,77 +135,75 @@
             이 소중한 날에 직접 초대드리지 못하지만,<br>
             멀리서 전해주시는 따뜻한 축복에 진심으로 감사드립니다.
           </p>
-          <h2 style="margin-top:18px;">훈덕🤍혜우 드림</h2>
+          <h2 style="margin-top:14px;">훈덕🤍혜우 드림</h2>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 신랑/신부 소개 -->
+  <!-- 신랑/신부 소개 (B안 토글 적용) -->
   <section class="content-section bg-primary-lite text-center" id="services">
     <div class="container px-4 px-lg-5">
       <div class="content-section-heading mb-4">
-        <p style="font-size:22px; font-weight:bold;">신랑 &amp; 신부</p>
+        <h2>신랑 &amp; 신부</h2>
       </div>
 
       <div class="row gx-4 gx-lg-5">
         <!-- 신랑 -->
         <div class="col-lg-6 col-md-6 mb-5 mb-lg-0">
-          <p style="font-size:14px;">김원기 · 유재철의 장남</p> <!-- 수정 -->
-          <h3> 신랑 김훈덕 </h3> <!-- 수정 -->
-          <img src="assets/img/ys.jpg" alt="신랑 이미지" class="img-fluid profile-img"> <!-- 이미지 경로 수정 -->
+          <p style="font-size:14px;">김원기 · 유재철의 장남</p>
+          <h3>신랑 김훈덕</h3>
+          <img src="assets/img/ys.jpg" alt="신랑 이미지" class="img-fluid profile-img" loading="lazy">
           <p><br></p>
           <ul class="list-inline">
             <li class="list-inline-item">
-              <a class="social-link mr-3" href="tel:01028504377" title="신랑에게 전화"><i class="fa-solid fa-phone"></i></a> <!-- 전화 수정 -->
+              <a class="social-link mr-3" href="tel:01028504377" title="신랑에게 전화"><i class="fa-solid fa-phone"></i></a>
             </li>
             <li class="list-inline-item">
-              <a class="social-link mr-3" href="#" onclick="copyAccount('신랑 계좌번호: 1000-8784-9391'); return false;" title="계좌번호 복사"><i class="fa-solid fa-comments-dollar"></i></a> <!-- 계좌 수정 -->
+              <a class="social-link mr-3" href="#" onclick="copyAccount('신랑 계좌번호: 1000-8784-9391'); return false;" title="계좌번호 복사"><i class="fa-solid fa-comments-dollar"></i></a>
             </li>
           </ul>
-          <div>
-            <p style="font-size:14x;" lass="toggle-button" data-target="#fold1" data-icon="#icon1">
-             혼주 연락처 보기 <span id="icon1">▼</span>
-              </p>
-            <div id="fold1" class="foldable-content"> ... </div>
-              <p style="font-size:14px;">김원기&nbsp;&nbsp;
-                <a href="tel:01032124377" title="전화"><i class="fa-solid fa-phone fa-sm"></i></a>&nbsp;&nbsp;
-                <a href="#" onclick="copyAccount('신랑 부친 계좌: 657801-01-015112'); return false;" title="계좌번호 복사"><i class="fa-solid fa-comments-dollar"></i></a>
-              </p> <!-- 수정 -->
-              <p style="font-size:14px;">유재철&nbsp;&nbsp;
-                <a href="tel:01030114377" title="전화"><i class="fa-solid fa-phone fa-sm"></i></a>&nbsp;&nbsp;
-                <a href="#" onclick="copyAccount('신랑 모친 계좌: 657802-96-112434'); return false;" title="계좌번호 복사"><i class="fa-solid fa-comments-dollar"></i></a>
-              </p> <!-- 수정 -->
-            </div>
+
+          <p class="toggle-button" data-target="#fold1" data-icon="#icon1">
+            혼주 연락처 보기 <span id="icon1">▼</span>
+          </p>
+          <div id="fold1" class="foldable-content">
+            <p style="font-size:14px;">김원기&nbsp;&nbsp;
+              <a href="tel:01032124377" title="전화"><i class="fa-solid fa-phone fa-sm"></i></a>&nbsp;&nbsp;
+              <a href="#" onclick="copyAccount('신랑 부친 계좌: 657801-01-015112'); return false;" title="계좌번호 복사"><i class="fa-solid fa-comments-dollar"></i></a>
+            </p>
+            <p style="font-size:14px;">유재철&nbsp;&nbsp;
+              <a href="tel:01030114377" title="전화"><i class="fa-solid fa-phone fa-sm"></i></a>&nbsp;&nbsp;
+              <a href="#" onclick="copyAccount('신랑 모친 계좌: 657802-96-112434'); return false;" title="계좌번호 복사"><i class="fa-solid fa-comments-dollar"></i></a>
+            </p>
           </div>
         </div>
 
         <!-- 신부 -->
         <div class="col-lg-6 col-md-6 mb-5 mb-lg-0">
-          <p style="font-size:14px;">박율봉 · 정은아의 장녀</p> <!-- 수정 -->
-          <h3> 신부 박혜우 </h3> <!-- 수정 -->
-          <img src="assets/img/jy.jpg" alt="신부 이미지" class="img-fluid profile-img"> <!-- 이미지 경로 수정 -->
+          <p style="font-size:14px;">박율봉 · 정은아의 장녀</p>
+          <h3>신부 박혜우</h3>
+          <img src="assets/img/jy.jpg" alt="신부 이미지" class="img-fluid profile-img" loading="lazy">
           <p><br></p>
           <ul class="list-inline">
             <li class="list-inline-item">
-              <a class="social-link mr-3" href="tel:01020219891" title="신부에게 전화"><i class="fa-solid fa-phone"></i></a> <!-- 전화 수정 -->
+              <a class="social-link mr-3" href="tel:01020219891" title="신부에게 전화"><i class="fa-solid fa-phone"></i></a>
             </li>
             <li class="list-inline-item">
-              <a class="social-link mr-3" href="#" onclick="copyAccount('신부 계좌번호: 1000-8819-3319'); return false;" title="계좌번호 복사"><i class="fa-solid fa-comments-dollar"></i></a> <!-- 계좌 수정 -->
+              <a class="social-link mr-3" href="#" onclick="copyAccount('신부 계좌번호: 1000-8819-3319'); return false;" title="계좌번호 복사"><i class="fa-solid fa-comments-dollar"></i></a>
             </li>
           </ul>
-          <div>
-            <p style="font-size:14px;" lass="toggle-button" data-target="#fold2" data-icon="#icon1">
-            혼주 연락처 보기 <span id="icon1">▼</span>
+
+          <p class="toggle-button" data-target="#fold2" data-icon="#icon2">
+            혼주 연락처 보기 <span id="icon2">▼</span>
+          </p>
+          <div id="fold2" class="foldable-content">
+            <p style="font-size:14px;">박율봉&nbsp;&nbsp;
+              <a href="tel:01032604836" title="전화"><i class="fa-solid fa-phone fa-sm"></i></a>
             </p>
-            <div id="fold1" class="foldable-content"> ... </div>
-              <p style="font-size:14px;">박율봉&nbsp;&nbsp;
-                <a href="tel:01032604836" title="전화"><i class="fa-solid fa-phone fa-sm"></i></a>&nbsp;&nbsp;
-              </p> <!-- 수정 -->
-              <p style="font-size:14px;">정은아&nbsp;&nbsp;
-                <a href="tel:01032899757" title="전화"><i class="fa-solid fa-phone fa-sm"></i></a>&nbsp;&nbsp;
-              </p> <!-- 수정 -->
-            </div>
+            <p style="font-size:14px;">정은아&nbsp;&nbsp;
+              <a href="tel:01032899757" title="전화"><i class="fa-solid fa-phone fa-sm"></i></a>
+            </p>
           </div>
         </div>
       </div>
@@ -215,86 +214,54 @@
   <section class="content-section bg-light" id="album">
     <div class="container px-4 px-lg-5">
       <div class="text-center">
-        <h2 style="font-weight:bold;">앨범</h2>
+        <h2>앨범</h2>
         <p class="muted" style="margin-top:6px;">좌우로 넘겨서 사진을 감상해 주세요</p>
       </div>
 
       <div class="swiper" style="margin-top:18px;">
         <div class="swiper-wrapper">
-          <!-- 최소 30장 예시 -->
-          <div class="swiper-slide"><img src="assets/album/01.JPG" alt="album 01" class="album-img"loading="lazy"></div>
-          <div class="swiper-slide"><img src="assets/album/02.jpg" alt="album 02" class="album-img"loading="lazy"></div>
-          <div class="swiper-slide"><img src="assets/album/03.jpg" alt="album 03" class="album-img"loading="lazy"></div>
-          <div class="swiper-slide"><img src="assets/album/04.jpg" alt="album 04" class="album-img"loading="lazy"></div>
-          <div class="swiper-slide"><img src="assets/album/05.jpg" alt="album 05" class="album-img"loading="lazy"></div>
-          <div class="swiper-slide"><img src="assets/album/06.jpg" alt="album 06" class="album-img"loading="lazy"></div>
-          <div class="swiper-slide"><img src="assets/album/07.jpg" alt="album 07" class="album-img"loading="lazy"></div>
-          <div class="swiper-slide"><img src="assets/album/08.jpg" alt="album 08" class="album-img"loading="lazy"></div>
-          <div class="swiper-slide"><img src="assets/album/09.jpg" alt="album 09" class="album-img"loading="lazy"></div>
-          <div class="swiper-slide"><img src="assets/album/10.jpg" alt="album 10" class="album-img"loading="lazy"></div>
+          <!-- 최소 30장 예시 (lazy 로딩) -->
+          <div class="swiper-slide"><img src="assets/album/01.JPG" alt="album 01" class="album-img" loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/02.jpg" alt="album 02" class="album-img" loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/03.jpg" alt="album 03" class="album-img" loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/04.jpg" alt="album 04" class="album-img" loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/05.jpg" alt="album 05" class="album-img" loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/06.jpg" alt="album 06" class="album-img" loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/07.jpg" alt="album 07" class="album-img" loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/08.jpg" alt="album 08" class="album-img" loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/09.jpg" alt="album 09" class="album-img" loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/10.jpg" alt="album 10" class="album-img" loading="lazy"></div>
 
-          <div class="swiper-slide"><img src="assets/album/11.jpg" alt="album 11" class="album-img"loading="lazy"></div>
-          <div class="swiper-slide"><img src="assets/album/12.jpg" alt="album 12" class="album-img"loading="lazy"></div>
-          <div class="swiper-slide"><img src="assets/album/13.jpg" alt="album 13" class="album-img"loading="lazy"></div>
-          <div class="swiper-slide"><img src="assets/album/14.jpg" alt="album 14" class="album-img"loading="lazy"></div>
-          <div class="swiper-slide"><img src="assets/album/15.jpg" alt="album 15" class="album-img"loading="lazy"></div>
-          <div class="swiper-slide"><img src="assets/album/16.jpg" alt="album 16" class="album-img"loading="lazy"></div>
-          <div class="swiper-slide"><img src="assets/album/17.jpg" alt="album 17" class="album-img"loading="lazy"></div>
-          <div class="swiper-slide"><img src="assets/album/18.jpg" alt="album 18" class="album-img"loading="lazy"></div>
-          <div class="swiper-slide"><img src="assets/album/19.jpg" alt="album 19" class="album-img"loading="lazy"></div>
-          <div class="swiper-slide"><img src="assets/album/20.jpg" alt="album 20" class="album-img"loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/11.jpg" alt="album 11" class="album-img" loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/12.jpg" alt="album 12" class="album-img" loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/13.jpg" alt="album 13" class="album-img" loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/14.jpg" alt="album 14" class="album-img" loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/15.jpg" alt="album 15" class="album-img" loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/16.jpg" alt="album 16" class="album-img" loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/17.jpg" alt="album 17" class="album-img" loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/18.jpg" alt="album 18" class="album-img" loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/19.jpg" alt="album 19" class="album-img" loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/20.jpg" alt="album 20" class="album-img" loading="lazy"></div>
 
-          <div class="swiper-slide"><img src="assets/album/21.jpg" alt="album 21" class="album-img"loading="lazy"></div>
-          <div class="swiper-slide"><img src="assets/album/22.jpg" alt="album 22" class="album-img"loading="lazy"></div>
-          <div class="swiper-slide"><img src="assets/album/23.jpg" alt="album 23" class="album-img"loading="lazy"></div>
-          <div class="swiper-slide"><img src="assets/album/24.jpg" alt="album 24" class="album-img"loading="lazy"></div>
-          <div class="swiper-slide"><img src="assets/album/25.jpg" alt="album 25" class="album-img"loading="lazy"></div>
-          <div class="swiper-slide"><img src="assets/album/26.jpg" alt="album 26" class="album-img"loading="lazy"></div>
-          <div class="swiper-slide"><img src="assets/album/27.jpg" alt="album 27" class="album-img"loading="lazy"></div>
-          <div class="swiper-slide"><img src="assets/album/28.JPG" alt="album 28" class="album-img"loading="lazy"></div>
-          <div class="swiper-slide"><img src="assets/album/29.jpg" alt="album 29" class="album-img"loading="lazy"></div>
-          <div class="swiper-slide"><img src="assets/album/30.jpg" alt="album 30" class="album-img"loading="lazy"></div>
-
-          <!-- 더 추가 가능 -->
-          <!-- <div class="swiper-slide"><img src="assets/album/31.jpg" alt="album 31" class="album-img"loading="lazy"></div> -->
+          <div class="swiper-slide"><img src="assets/album/21.jpg" alt="album 21" class="album-img" loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/22.jpg" alt="album 22" class="album-img" loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/23.jpg" alt="album 23" class="album-img" loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/24.jpg" alt="album 24" class="album-img" loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/25.jpg" alt="album 25" class="album-img" loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/26.jpg" alt="album 26" class="album-img" loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/27.jpg" alt="album 27" class="album-img" loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/28.JPG" alt="album 28" class="album-img" loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/29.jpg" alt="album 29" class="album-img" loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/30.jpg" alt="album 30" class="album-img" loading="lazy"></div>
         </div>
         <div class="swiper-pagination"></div>
-        <div class="swiper-button-prev" style="color:#333;"></div>
-        <div class="swiper-button-next" style="color:#333;"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
       </div>
     </div>
   </section>
 
-  <!-- 방명록 (Formspree 서버리스) -->
-  <section class="content-section" id="guestbook">
-    <div class="container px-4 px-lg-5">
-      <div class="text-center">
-        <h2 style="font-weight:bold;">방명록</h2>
-        <p class="muted">축하 메시지를 남겨 주세요.</p>
-      </div>
-
-      <form id="guestForm" action="https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT" method="POST" style="max-width:640px; margin:16px auto 0;">
-        <div class="mb-3">
-          <label class="form-label">이름</label>
-          <input class="form-control" name="name" required placeholder="이름을 적어주세요">
-        </div>
-        <div class="mb-3">
-          <label class="form-label">연락처(선택)</label>
-          <input class="form-control" name="contact" placeholder="전화번호 또는 이메일">
-        </div>
-        <div class="mb-3">
-          <label class="form-label">메시지</label>
-          <textarea class="form-control" name="message" rows="5" required placeholder="축하 메시지를 적어주세요"></textarea>
-        </div>
-
-        <!-- 스팸 방지(허니팟) -->
-        <input type="text" name="_gotcha" style="display:none">
-
-        <button type="submit" class="btn btn-dark w-100">보내기</button>
-        <p id="guestResult" class="muted" style="margin-top:8px;"></p>
-      </form>
-    </div>
-  </section>
+<!-- 방명록 (작성중) -->
 
 
   <!-- JS -->
@@ -302,43 +269,36 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
   <script>
+    /* B안: 이벤트 위임 토글 */
     document.addEventListener('click', function(e){
-    const btn = e.target.closest('.toggle-button');
-    if(!btn) return;
-    const targetSel = btn.getAttribute('data-target');
-    const iconSel = btn.getAttribute('data-icon');
-    const panel = document.querySelector(targetSel);
-    const icon  = document.querySelector(iconSel);
-    if(!panel) return;
+      const btn = e.target.closest('.toggle-button');
+      if(!btn) return;
+      const targetSel = btn.getAttribute('data-target');
+      const iconSel   = btn.getAttribute('data-icon');
+      const panel = document.querySelector(targetSel);
+      const icon  = document.querySelector(iconSel);
+      if(!panel) return;
+      const visible = panel.style.display === 'block';
+      panel.style.display = visible ? 'none' : 'block';
+      if(icon) icon.textContent = visible ? '▼' : '▲';
+    });
 
-    const visible = panel.style.display === 'block';
-    panel.style.display = visible ? 'none' : 'block';
-    if(icon) icon.textContent = visible ? '▼' : '▲';
-  });
-
-    
-  </script>
-    function toggleFoldable(targetSel, iconSel){
-      const el = document.querySelector(targetSel);
-      const icon = document.querySelector(iconSel);
-      if(!el) return;
-      const showing = el.style.display === 'block';
-      el.style.display = showing ? 'none' : 'block';
-      if(icon) icon.textContent = showing ? '▼' : '▲';
-    }
+    /* 계좌 복사 */
     function copyAccount(text){
       if(navigator.clipboard && window.isSecureContext){
         navigator.clipboard.writeText(text).then(function(){
-          alert('클립보드에 복사했어요.\n' + text);
+          alert('복사 완료!\n마음 전해주셔서 고맙습니다.\n' + text);
         });
       }else{
         const ta = document.createElement('textarea');
         ta.value = text; document.body.appendChild(ta);
         ta.select(); document.execCommand('copy');
         document.body.removeChild(ta);
-        alert('클립보드에 복사했어요.\n' + text);
+        alert('복사 완료!\n마음 전해주셔서 고맙습니다.\n' + text);
       }
     }
+
+    /* 앨범 슬라이더 */
     const albumSwiper = new Swiper('.swiper', {
       loop: true,
       slidesPerView: 1,
@@ -352,21 +312,6 @@
         1024:{ slidesPerView: 1.4,  spaceBetween: 18 }
       }
     });
-    const gf = document.getElementById('guestForm');
-    const gr = document.getElementById('guestResult');
-    if(gf){
-      gf.addEventListener('submit', async function(e){
-        e.preventDefault();
-        gr.textContent = '전송 중...';
-        const res = await fetch(gf.action, { method:'POST', body: new FormData(gf), headers:{ 'Accept': 'application/json' }});
-        if(res.ok){
-          gr.textContent = '전송되었습니다. 축하의 마음 고맙습니다!';
-          gf.reset();
-        }else{
-          gr.textContent = '잠시 후 다시 시도해 주세요.';
-        }
-      });
-    }
   </script>
 </body>
 </html>
