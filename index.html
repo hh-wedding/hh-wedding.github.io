@@ -163,10 +163,10 @@
             </li>
           </ul>
           <div>
-            <p style="font-size:14x;" class="toggle-button" onclick="toggleFoldable('#fold1','#icon1')">
-              혼주 연락처 보기 <span id="icon1">▼</span>
-            </p>
-            <div id="fold1" class="foldable-content">
+            <p style="font-size:14x;" lass="toggle-button" data-target="#fold1" data-icon="#icon1">
+             혼주 연락처 보기 <span id="icon1">▼</span>
+              </p>
+            <div id="fold1" class="foldable-content"> ... </div>
               <p style="font-size:14px;">김원기&nbsp;&nbsp;
                 <a href="tel:01032124377" title="전화"><i class="fa-solid fa-phone fa-sm"></i></a>&nbsp;&nbsp;
                 <a href="#" onclick="copyAccount('신랑 부친 계좌: 657801-01-015112'); return false;" title="계좌번호 복사"><i class="fa-solid fa-comments-dollar"></i></a>
@@ -194,10 +194,10 @@
             </li>
           </ul>
           <div>
-            <p style="font-size:14px;" class="toggle-button" onclick="toggleFoldable('#fold2','#icon2')">
-              혼주 연락처 보기 <span id="icon2">▼</span>
+            <p style="font-size:14px;" lass="toggle-button" data-target="#fold2" data-icon="#icon1">
+            혼주 연락처 보기 <span id="icon1">▼</span>
             </p>
-            <div id="fold2" class="foldable-content2">
+            <div id="fold1" class="foldable-content"> ... </div>
               <p style="font-size:14px;">박율봉&nbsp;&nbsp;
                 <a href="tel:01032604836" title="전화"><i class="fa-solid fa-phone fa-sm"></i></a>&nbsp;&nbsp;
               </p> <!-- 수정 -->
@@ -302,6 +302,22 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
   <script>
+    document.addEventListener('click', function(e){
+    const btn = e.target.closest('.toggle-button');
+    if(!btn) return;
+    const targetSel = btn.getAttribute('data-target');
+    const iconSel = btn.getAttribute('data-icon');
+    const panel = document.querySelector(targetSel);
+    const icon  = document.querySelector(iconSel);
+    if(!panel) return;
+
+    const visible = panel.style.display === 'block';
+    panel.style.display = visible ? 'none' : 'block';
+    if(icon) icon.textContent = visible ? '▼' : '▲';
+  });
+
+    
+  </script>
     function toggleFoldable(targetSel, iconSel){
       const el = document.querySelector(targetSel);
       const icon = document.querySelector(iconSel);
