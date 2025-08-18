@@ -8,14 +8,14 @@
   <meta name="description" content="2025.09.20 훈덕🤍혜우 결혼합니다." />
   <meta name="author" content="HoonDeok & HyeWoo" />
 
-  <!-- Open Graph (절대경로 권장) -->
+  <!-- Open Graph -->
   <meta property="og:title" content="훈덕🤍혜우 모바일 청첩장" />
   <meta property="og:description" content="2025.09.20 훈덕🤍혜우 결혼합니다." />
   <meta property="og:image" content="https://hh-wedding.github.io/hh-wedding/assets/img/url-main.jpg" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://hh-wedding.github.io/hh-wedding/" />
 
-  <!-- Fonts: 타이틀 + 본문 -->
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
 
@@ -71,16 +71,6 @@
       border:3px solid var(--color1); box-shadow:0 6px 24px rgba(0,0,0,.12);
     }
 
-    /* 신랑/신부 버튼: 아이콘+텍스트 알약 */
-    .action-btn{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:8px 14px; border-radius:999px;
-      border:1px solid var(--color4); color:var(--color4); text-decoration:none;
-      font-weight:500; line-height:1;
-    }
-    .action-btn:hover{ background:var(--color4); color:#fff; }
-    .action-btn i{ font-size:16px; }
-
     /* 혼주 토글 */
     .toggle-button{ cursor:pointer; user-select:none; display:inline-flex; align-items:center; gap:6px; }
     .foldable-content{ display:none; margin-top:10px; }
@@ -101,12 +91,6 @@
     }
     .icon-pill:hover{ background:var(--color2); color:#fff; }
     .icon-pill i{ font-size:18px; }
-
-    /* 접근성: 시각적으로 숨김 */
-    .visually-hidden{
-      position:absolute !important; height:1px; width:1px; overflow:hidden;
-      clip:rect(1px,1px,1px,1px); white-space:nowrap; border:0; padding:0; margin:-1px;
-    }
 
     /* 배경 포인트 */
     .bg-light { background-color: rgba(230, 229, 163, 0.2) !important; }
@@ -171,7 +155,7 @@
     </div>
   </section>
 
- <!-- 신랑/신부 소개 -->
+  <!-- 신랑/신부 소개 -->
   <section class="content-section bg-primary-lite text-center" id="services">
     <div class="container px-4 px-lg-5">
       <div class="content-section-heading mb-4">
@@ -185,15 +169,16 @@
           <h3>신랑 김훈덕</h3>
           <img src="assets/img/ys.jpg" alt="신랑 이미지" class="img-fluid profile-img" loading="lazy">
           <p><br></p>
+          <!-- 아이콘만 보이도록 변경 -->
           <ul class="list-inline">
             <li class="list-inline-item">
-              <a class="action-btn" href="tel:01028504377" title="신랑에게 전화">
-                <i class="fa-solid fa-phone"></i><span>전화</span>
+              <a class="icon-pill" href="tel:01028504377" title="신랑에게 전화" aria-label="신랑에게 전화">
+                <i class="fa-solid fa-phone"></i>
               </a>
             </li>
             <li class="list-inline-item">
-              <a class="action-btn" href="#" onclick="copyAccount('신랑 계좌번호: 1000-8784-9391'); return false;" title="신랑 계좌번호 복사">
-                <i class="fa-solid fa-comments-dollar"></i><span>계좌복사</span>
+              <a class="icon-pill" href="#" onclick="copyAccount('신랑 계좌번호 토스뱅크크: 1000-8784-9391'); return false;" title="신랑 계좌번호 복사" aria-label="신랑 계좌번호 복사">
+                <i class="fa-solid fa-comments-dollar"></i>
               </a>
             </li>
           </ul>
@@ -222,7 +207,7 @@
             <!-- 모친 -->
             <div class="contact-row">
               <strong>유재철</strong>
-              <a class="icon-pill" href="tel:010030114377" title="전화 걸기" aria-label="유재철에게 전화">
+              <a class="icon-pill" href="tel:01030114377" title="전화 걸기" aria-label="유재철에게 전화">
                 <i class="fa-solid fa-phone"></i>
               </a>
               <a class="icon-pill" href="sms:01030114377" title="문자 보내기" aria-label="유재철에게 문자">
@@ -245,15 +230,16 @@
           <h3>신부 박혜우</h3>
           <img src="assets/img/jy.jpg" alt="신부 이미지" class="img-fluid profile-img" loading="lazy">
           <p><br></p>
+          <!-- 아이콘만 보이도록 변경 -->
           <ul class="list-inline">
             <li class="list-inline-item">
-              <a class="action-btn" href="tel:01020219891" title="신부에게 전화">
-                <i class="fa-solid fa-phone"></i><span>전화</span>
+              <a class="icon-pill" href="tel:01020219891" title="신부에게 전화" aria-label="신부에게 전화">
+                <i class="fa-solid fa-phone"></i>
               </a>
             </li>
             <li class="list-inline-item">
-              <a class="action-btn" href="#" onclick="copyAccount('신부 계좌번호: 1000-8819-3319'); return false;" title="신부 계좌번호 복사">
-                <i class="fa-solid fa-comments-dollar"></i><span>계좌복사</span>
+              <a class="icon-pill" href="#" onclick="copyAccount('신부 계좌번호 토스뱅크: 1000-8819-3319'); return false;" title="신부 계좌번호 복사" aria-label="신부 계좌번호 복사">
+                <i class="fa-solid fa-comments-dollar"></i>
               </a>
             </li>
           </ul>
@@ -289,7 +275,6 @@
       </div>
     </div>
   </section>
-
 
   <!-- Album (수동 30장 예시) -->
   <section class="content-section bg-light" id="album">
@@ -328,7 +313,7 @@
           <div class="swiper-slide"><img src="assets/album/24.jpg" alt="album 24" class="album-img" loading="lazy"></div>
           <div class="swiper-slide"><img src="assets/album/25.jpg" alt="album 25" class="album-img" loading="lazy"></div>
           <div class="swiper-slide"><img src="assets/album/27.jpg" alt="album 27" class="album-img" loading="lazy"></div>
-          <div class="swiper-slide"><img src="assets/album/28.jpg" alt="album 28" class="album-img" loading="lazy"></div>
+          <div class="swiper-slide"><img src="assets/album/28.JPG" alt="album 28" class="album-img" loading="lazy"></div>
           <div class="swiper-slide"><img src="assets/album/29.jpg" alt="album 29" class="album-img" loading="lazy"></div>
           <div class="swiper-slide"><img src="assets/album/30.jpg" alt="album 30" class="album-img" loading="lazy"></div>
         </div>
@@ -370,14 +355,14 @@
     function copyAccount(text){
       if(navigator.clipboard && window.isSecureContext){
         navigator.clipboard.writeText(text).then(function(){
-          alert('토스뱅크\n' + text);
+          alert('토스 뱅크\n' + text);
         });
       }else{
         const ta = document.createElement('textarea');
         ta.value = text; document.body.appendChild(ta);
         ta.select(); document.execCommand('copy');
         document.body.removeChild(ta);
-        alert('토스뱅크\n' + text);
+        alert('토스 뱅크\n' + text);
       }
     }
 
@@ -392,14 +377,75 @@
       const text = owner ? `${owner} 계좌번호: ${account}` : `계좌번호: ${account}`;
       if(navigator.clipboard && window.isSecureContext){
         navigator.clipboard.writeText(text).then(function(){
-          alert('국민은행\n' + text);
+          alert('국민은행       </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 방명록: 추후 Staticman/giscus 등 적용 전까지 안내만 -->
+  <section class="content-section" id="guestbook">
+    <div class="container px-4 px-lg-5 text-center">
+      <h2>방명록</h2>
+      <p class="muted">곧 페이지 내 방명록을 열 예정입니다. 따뜻한 메시지를 기대할게요 🤍</p>
+    </div>
+  </section>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <script>
+    /* 혼주 토글(B안: 이벤트 위임) */
+    document.addEventListener('click', function(e){
+      const btn = e.target.closest('.toggle-button');
+      if(!btn) return;
+      const targetSel = btn.getAttribute('data-target');
+      const iconSel   = btn.getAttribute('data-icon');
+      const panel = document.querySelector(targetSel);
+      const icon  = document.querySelector(iconSel);
+      if(!panel) return;
+      const visible = panel.style.display === 'block';
+      panel.style.display = visible ? 'none' : 'block';
+      if(icon) icon.textContent = visible ? '▼' : '▲';
+    });
+
+    /* 계좌 복사(신랑/신부 상단 버튼용) */
+    function copyAccount(text){
+      if(navigator.clipboard && window.isSecureContext){
+        navigator.clipboard.writeText(text).then(function(){
+          alert('복사 완료!\n' + text);
         });
       }else{
         const ta = document.createElement('textarea');
         ta.value = text; document.body.appendChild(ta);
         ta.select(); document.execCommand('copy');
         document.body.removeChild(ta);
-        alert('국민은행\n' + text);
+        alert('복사 완료!\n' + text);
+      }
+    }
+
+    /* 계좌 복사(혼주 아이콘-only 버튼용: data-attr에서 읽기) */
+    function copyAccountFromBtn(btn){
+      const account = btn.getAttribute('data-account') || '';
+      const owner = btn.getAttribute('data-owner') || '';
+      if(!account){
+        alert('계좌 정보가 없습니다.');
+        return;
+      }
+      const text = owner ? `${owner} 계좌번호: ${account}` : `계좌번호: ${account}`;
+      if(navigator.clipboard && window.isSecureContext){
+        navigator.clipboard.writeText(text).then(function(){
+          alert('복사 완료!\n' + text);
+        });
+      }else{
+        const ta = document.createElement('textarea');
+        ta.value = text; document.body.appendChild(ta);
+        ta.select(); document.execCommand('copy');
+        document.body.removeChild(ta);
+        alert('복사 완료!\n' + text);
       }
     }
 
