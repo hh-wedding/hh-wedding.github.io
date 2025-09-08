@@ -395,7 +395,7 @@
       }
     });
 
-    /* 썸네일 그리드 생성 & 연동 
+    /* 썸네일 그리드 생성 & 연동 */
     (function makeAlbumGrid(){
       const grid = document.getElementById('albumGrid');
       if(!grid) return;
@@ -404,7 +404,7 @@
       slideImgs.forEach((img, idx) => {
         const thumb = document.createElement('img');
         thumb.src = img.getAttribute('src');
-        thumb.alt = img.getAttribute('alt') || `album ${idx+1}`;
+        thumb.alt = img.getAttribute('alt') || `album ${idx}`;
         thumb.loading = 'lazy'; thumb.decoding = 'async';
         thumb.addEventListener('click', () => albumSwiper.slideToLoop(idx, 400));
         grid.appendChild(thumb);
@@ -417,10 +417,10 @@
       }
       albumSwiper.on('slideChange', highlightThumb);
       highlightThumb();
-    })();*/
+    })();
 
 
-    /* 썸네일 그리드 생성 & 연동 (loop 환경 안전 버전) */
+    /* 썸네일 그리드 생성 & 연동 (loop 환경 안전 버전)
 (function makeAlbumGrid(){
   const grid = document.getElementById('albumGrid');
   if(!grid || typeof albumSwiper === 'undefined') return;
@@ -459,7 +459,7 @@
 
   albumSwiper.on('slideChange', highlightThumb);
   highlightThumb();
-})();
+})(); */
 
   </script>
 </body>
