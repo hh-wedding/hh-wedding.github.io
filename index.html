@@ -379,28 +379,13 @@
         alert('복사 완료!\\n' + text);
       }
     }
-
-    /* 앨범 슬라이더 */
-    const albumSwiper = new Swiper('.swiper', {
-      loop: true,
-      slidesPerView: 1,
-      spaceBetween: 12,
-      centeredSlides: true,
-      pagination: { el: '.swiper-pagination', clickable: true },
-      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-      breakpoints: {
-        640: { slidesPerView: 1.05, spaceBetween: 12 },
-        768: { slidesPerView: 1.2,  spaceBetween: 16 },
-        1024:{ slidesPerView: 1.4,  spaceBetween: 18 }
-      }
-    });
-
+    
    /* ===== 유틸: URL을 절대경로로 정규화해서 비교 키로 사용 ===== */
     function toKey(url) {
       try { return new URL(url, location.href).pathname; }
       catch { return url; }
     }
-
+    
     /* 앨범 슬라이더 */
     const albumSwiper = new Swiper('.swiper', {
       loop: true,
