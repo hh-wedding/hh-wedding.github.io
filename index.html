@@ -395,7 +395,7 @@
       }
     });
 
-    /* 썸네일 그리드 생성 & 연동 */
+    /* 썸네일 그리드 생성 & 연동 
     (function makeAlbumGrid(){
       const grid = document.getElementById('albumGrid');
       if(!grid) return;
@@ -404,7 +404,7 @@
       slideImgs.forEach((img, idx) => {
         const thumb = document.createElement('img');
         thumb.src = img.getAttribute('src');
-        thumb.alt = img.getAttribute('alt') || `album ${idx}`;
+        thumb.alt = img.getAttribute('alt') || `album ${idx + 1}`;
         thumb.loading = 'lazy'; thumb.decoding = 'async';
         thumb.addEventListener('click', () => albumSwiper.slideToLoop(idx, 400));
         grid.appendChild(thumb);
@@ -417,7 +417,40 @@
       }
       albumSwiper.on('slideChange', highlightThumb);
       highlightThumb();
-    })();
+    })();*/
+
+    (function makeAlbumGrid(){
+  const grid = document.getElementById('albumGrid');
+  if(!grid) return;
+
+  // 복제본 제외하고 원본 슬라이드만 선택
+  const slideImgs = Array.from(
+    document.querySelectorAll('.swiper .swiper-wrapper > .swiper-slide:not(.swiper-slide-duplicate) img')
+  );
+
+  slideImgs.forEach((img, idx) => {
+    const thumb = document.createElement('img');
+    thumb.src = img.getAttribute('src');
+    thumb.alt = img.getAttribute('alt') || `album ${idx + 1}`;
+    thumb.loading = 'lazy';
+    thumb.decoding = 'async';
+
+    // loop 모드일 때 안전하게 이동
+    thumb.addEventListener('click', () => albumSwiper.slideToLoop(idx, 400));
+
+    grid.appendChild(thumb);
+  });
+
+  function highlightThumb(){
+    const realIndex = albumSwiper.realIndex; // 항상 원본 기준
+    const thumbs = grid.querySelectorAll('img');
+    thumbs.forEach((t, i) => t.classList.toggle('is-active', i === realIndex));
+  }
+
+  albumSwiper.on('slideChange', highlightThumb);
+  highlightThumb();
+})();
+
 
 
     /* 썸네일 그리드 생성 & 연동 (loop 환경 안전 버전)
