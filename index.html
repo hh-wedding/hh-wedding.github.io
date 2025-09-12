@@ -112,14 +112,13 @@
     }
     .album-grid img:hover{ transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.12); }
     .album-grid img.is-active{ outline: 3px solid var(--color4); transform: translateY(-1px); }
-  </style>
-</head>
 
- /* 방명록 */
-   #guestResult{ font-size:14px; color:var(--muted); margin-top:8px; }
+    /* 방명록 */
+    #guestResult{ font-size:14px; color:var(--muted); margin-top:8px; }
   </style>
 </head>
 <body>
+
 
   <!-- Header -->
   <header class="masthead d-flex align-items-center">
@@ -288,7 +287,7 @@
           <div class="swiper-slide"><img src="assets/album/18.jpg" alt="album 18" class="album-img" loading="lazy"></div>
           <div class="swiper-slide"><img src="assets/album/19.jpg" alt="album 19" class="album-img" loading="lazy"></div>
           <div class="swiper-slide"><img src="assets/album/20.jpg" alt="album 20" class="album-img" loading="lazy"></div>
-
+          <div class="swiper-slide"><img src="assets/album/20.jpg" alt="album 21" class="album-img" loading="lazy"></div>
           <div class="swiper-slide"><img src="assets/album/22.jpg" alt="album 22" class="album-img" loading="lazy"></div>
           <div class="swiper-slide"><img src="assets/album/23.jpg" alt="album 23" class="album-img" loading="lazy"></div>
         </div>
@@ -327,76 +326,55 @@
     </div>
   </section>
 
-  <!-- JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<!-- JS (맨 아래, </body> 직전) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script>
-  /* 스크롤 복원 방지 + 첫 로드시 맨 위로 */
+  // 0) 첫 로드 시 맨 위로
   if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
-  window.addEventListener('load', () => { window.scrollTo(0, 0); });
+  window.addEventListener('load', () => window.scrollTo(0, 0));
 
-  /* 혼주 토글(이벤트 위임) */
-  document.addEventListener('click', function(e){
-    const btn = e.target.closest('.toggle-button');
-    if(!btn) return;
-    const panel = document.querySelector(btn.getAttribute('data-target'));
-    const icon  = document.querySelector(btn.getAttribute('data-icon'));
-    if(!panel) return;
-    const visible = panel.style.display === 'block';
-    panel.style.display = visible ? 'none' : 'block';
-    if(icon) icon.textContent = visible ? '▼' : '▲';
-  });
+  // 1) DOM 준비 후 모든 초기화 실행
+  document.addEventListener('DOMContentLoaded', function(){
+    /* 혼주 토글(이벤트 위임) */
+    document.addEventListener('click', function(e){
+      const btn = e.target.closest('.toggle-button');
+      if(!btn) return;
+      const panel = document.querySelector(btn.getAttribute('data-target'));
+      const icon  = document.querySelector(btn.getAttribute('data-icon'));
+      if(!panel) return;
+      const visible = panel.style.display === 'block';
+      panel.style.display = visible ? 'none' : 'block';
+      if(icon) icon.textContent = visible ? '▼' : '▲';
+    });
 
-  /* 계좌 복사(신랑/신부 버튼) */
-  function copyAccount(text){
-    if(navigator.clipboard && window.isSecureContext){
-      navigator.clipboard.writeText(text).then(function(){
+    /* 계좌 복사(공용) */
+    window.copyAccount = function(text){
+      if(navigator.clipboard && window.isSecureContext){
+        navigator.clipboard.writeText(text).then(()=>alert('복사 완료!\n' + text));
+      }else{
+        const ta = document.createElement('textarea');
+        ta.value = text; document.body.appendChild(ta);
+        ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
         alert('복사 완료!\n' + text);
-      });
-    }else{
-      const ta = document.createElement('textarea');
-      ta.value = text; document.body.appendChild(ta);
-      ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
-      alert('복사 완료!\n' + text);
+      }
     }
-  }
-
-  /* 계좌 복사(혼주 아이콘-only) */
-  function copyAccountFromBtn(btn){
-    const account = btn.getAttribute('data-account') || '';
-    const owner = btn.getAttribute('data-owner') || '';
-    if(!account){ alert('계좌 정보가 없습니다.'); return; }
-    const text = owner ? `${owner} 계좌번호: ${account}` : `계좌번호: ${account}`;
-    if(navigator.clipboard && window.isSecureContext){
-      navigator.clipboard.writeText(text).then(function(){
-        alert('복사 완료!\n' + text);
-      });
-    }else{
-      const ta = document.createElement('textarea');
-      ta.value = text; document.body.appendChild(ta);
-      ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
-      alert('복사 완료!\n' + text);
+    window.copyAccountFromBtn = function(btn){
+      const account = btn.getAttribute('data-account') || '';
+      const owner = btn.getAttribute('data-owner') || '';
+      if(!account){ alert('계좌 정보가 없습니다.'); return; }
+      const text = owner ? `${owner} 계좌번호: ${account}` : `계좌번호: ${account}`;
+      window.copyAccount(text);
     }
-  }
 
-  /* =========================
-     ✅ 앨범: 원본 순서 고정 방식
-     1) Swiper 초기화 전에 HTML의 <img>들을 순서대로 수집
-     2) 그 순서로 썸네일 그리드 생성
-     3) 클릭 → slideToLoop(원본 인덱스)
-     4) 하이라이트 → albumSwiper.realIndex 기반
-     ========================= */
-
- // Swiper 초기화 전에 HTML의 <img> 순서 수집
+    /* ===== 앨범: 원본 순서 고정 + 썸네일 연동 ===== */
+    // (A) HTML의 원본 이미지 순서 수집
     const albumList = Array.from(
       document.querySelectorAll('.swiper .swiper-wrapper > .swiper-slide > img')
-    ).map(img => ({
-      src: img.getAttribute('src'),
-      alt: img.getAttribute('alt') || ''
-    }));
+    ).map(img => ({ src: img.getAttribute('src'), alt: img.getAttribute('alt') || '' }));
 
-    // Swiper
+    // (B) Swiper 초기화
     const albumSwiper = new Swiper('.swiper', {
       loop: true,
       slidesPerView: 1,
@@ -411,7 +389,7 @@
       }
     });
 
-    // 썸네일 그리드 생성 (원본 순서 그대로)
+    // (C) 썸네일 그리드 생성
     (function makeAlbumGridFixedOrder(){
       const grid = document.getElementById('albumGrid');
       if(!grid) return;
@@ -422,58 +400,37 @@
         thumb.alt = item.alt || `album ${idx+1}`;
         thumb.loading = 'lazy';
         thumb.decoding = 'async';
-
-        // 썸네일 클릭 → 원본 인덱스로 정확히 이동
-        thumb.addEventListener('click', () => {
-          albumSwiper.slideToLoop(idx, 400);
-        });
-
+        thumb.addEventListener('click', () => albumSwiper.slideToLoop(idx, 400));
         grid.appendChild(thumb);
       });
 
-      // 활성 표시: Swiper의 realIndex(0-base)가 원본 순서와 1:1 매칭
       function highlightThumb(){
         const realIndex = albumSwiper.realIndex;
         const thumbs = grid.querySelectorAll('img');
         thumbs.forEach((t, i) => t.classList.toggle('is-active', i === realIndex));
       }
-
-      albumSwiper.on('init', highlightThumb);
       albumSwiper.on('slideChange', highlightThumb);
-      // 이미 초기화된 경우 대비
-      highlightThumb();
+      highlightThumb(); // 초기 1회 수동 호출
     })();
 
-  /* 방명록 (Google Sheets 연동) */
-    const GAS_ENDPOINT = "https://script.google.com/macros/s/AKfycbzO5GGlJvZxlM2lW7twPwY4Jl9PELv0-2hVrf1-hMrEqeeP1tqBbg8-Y7-Oyc9lK6MG/exec";
-  
-    const form = 1MsCi7loqzmzLPiKUTWu2L_5fcdZDbU3T8yXAueMCQHk('guestForm');
-    const result = 방명록('guestResult');
+    /* ===== 방명록 (Google Sheets 연동) ===== */
+    const form = document.getElementById('guestForm');
+    const result = document.getElementById('guestResult');
+    const GAS_ENDPOINT = "https://script.google.com/macros/s/AKfycbzO5GGlJvZxlM2lW7twPwY4Jl9PELv0-2hVrf1-hMrEqeeP1tqBbg8-Y7-Oyc9lK6MG/exec"; // 네 최신 /exec
 
-    form.addEventListener('submit', async function(e) {
+    form?.addEventListener('submit', async function(e) {
       e.preventDefault();
       result.textContent = "전송 중...";
-
-      const formData = new FormData(form);
-
       try {
-        const res = await fetch(GAS_ENDPOINT, {
-          method: "POST",
-          body: formData,
-          // mode: "cors" // 기본값이 cors라 생략 가능
-        });
-
-        if (res.ok) {
-          result.textContent = "전송 완료! 축하의 마음 고마워요 🤍";
-          form.reset();
-        } else {
-          result.textContent = "오류가 발생했습니다. 잠시 후 다시 시도해주세요.";
-        }
+        const res = await fetch(GAS_ENDPOINT, { method: "POST", body: new FormData(form) });
+        if (res.ok) { result.textContent = "전송 완료! 축하의 마음 고마워요 🤍"; form.reset(); }
+        else { result.textContent = "오류가 발생했습니다. 잠시 후 다시 시도해주세요."; }
       } catch (err) {
         console.error(err);
         result.textContent = "네트워크 오류가 발생했습니다.";
       }
     });
-  </script>
+  });
+</script>
 </body>
 </html>
