@@ -58,7 +58,7 @@
     header.masthead::before{ content:""; position:absolute; inset:0; background:var(--heroOverlay);}
     header .container{ position:relative; z-index:2;}
     header h1{ font-size:64px; letter-spacing:1px; color:#fff;}
-    header h2.tag{ font-size:24px; color:#fff; opacity:.95; margin-top:6px;}
+    header h2.tag{ font-size:22px; color:#fff; opacity:.95; margin-top:6px;}
     header p.date{ font-size:18px; margin-top:14px; color:#fff;}
 
     section.content-section{ padding:64px 0; }
@@ -115,7 +115,10 @@
   </style>
 </head>
 
-<!-- ✅ 여기: 여분의 > 제거 -->
+ /* 방명록 */
+   #guestResult{ font-size:14px; color:var(--muted); margin-top:8px; }
+</style>
+</head>
 <body>
 
   <!-- Header -->
@@ -123,7 +126,7 @@
     <div class="container px-4 px-lg-5 text-center">
       <h1>HyeWoo &amp; HoonDeok</h1>
       <h2 class="tag">| We're getting married |</h2>
-      <p class="date">❤️ 2025.09.20 ❤️</p>
+      <p class="date">❤️ 2025.09.20 6PM ❤️</p>
     </div>
   </header>
 
@@ -152,7 +155,7 @@
   <!-- Video -->
   <section class="content-section" id="video">
     <div class="container px-4 px-lg-5 text-center">
-      <h2 style="margin-bottom:18px; font-weight:bold;">(영상 제작 중 ing) </h2>
+      <h2 style="margin-bottom:18px; font-weight:bold;">(영상 제작 중, 조금만 기다려주세요) </h2>
       <div style="max-width:720px; margin:0 auto;">
         <video controls playsinline preload="metadata"
           poster="assets/img/cover.JPG"
@@ -299,37 +302,34 @@
     </div>
   </section>
 
-  <!-- 방명록 (안내) -->
+  <!-- 방명록 -->
   <section class="content-section" id="guestbook">
     <div class="container px-4 px-lg-5 text-center">
       <h2>방명록</h2>
-      <p class="muted">따뜻한 메시지를 기대할게요🤍</p>
+      <p class="muted">축하 메시지를 남겨주세요🤍</p>
+
+      <form id="guestForm" style="max-width:640px; margin:0 auto;">
+        <div class="mb-3">
+          <label class="form-label">이름</label>
+          <input class="form-control" name="name" required placeholder="이름을 적어주세요">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">연락처(선택)</label>
+          <input class="form-control" name="contact" placeholder="전화번호 또는 이메일">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">메시지</label>
+          <textarea class="form-control" name="message" rows="5" required placeholder="축하 메시지를 적어주세요"></textarea>
+        </div>
+        <button type="submit" class="btn btn-dark w-100">보내기</button>
+        <p id="guestResult"></p>
+      </form>
     </div>
   </section>
 
-<div id="disqus_thread"></div>
-<script>
-    /**
-    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-    /*
-    var disqus_config = function () {
-    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
-    */
-    (function() { // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    s.src = 'https://https-hh-wedding-github-io.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  
-<!-- JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script>
   /* 스크롤 복원 방지 + 첫 로드시 맨 위로 */
@@ -438,13 +438,40 @@
       thumbs.forEach((t, i) => t.classList.toggle('is-active', i === realIndex));
     }
 
-    albumSwiper.on('afterInit', highlightThumb);
+    albumSwiper.on('Init', highlightThumb);
     albumSwiper.on('slideChange', highlightThumb);
 
     // 혹시 이미 init된 상태 대비
     highlightThumb();
   })();
-</script>
 
+
+  /* 방명록 (Google Sheets 연동) */
+    const form = document.getElementById('guestForm');
+    const result = document.getElementById('guestResult');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      result.textContent = "전송 중...";
+
+      const formData = new FormData(form);
+
+      try {
+        const res = await fetch("https://script.google.com/macros/s/AKfycby229R8gJvCcIjnHqKfJLFqAYau5cZx5N1uToMxrlz0hO8mjOxcDPfZPdaNbthyN_f5/exec", {
+          method: "POST",
+          body: formData,
+        });
+
+        if (res.ok) {
+          result.textContent = "전송 완료! 축하의 마음 고마워요 🤍";
+          form.reset();
+        } else {
+          result.textContent = "오류가 발생했습니다. 잠시 후 다시 시도해주세요.";
+        }
+      } catch (err) {
+        result.textContent = "네트워크 오류가 발생했습니다.";
+      }
+    });
+  </script>
 </body>
 </html>
